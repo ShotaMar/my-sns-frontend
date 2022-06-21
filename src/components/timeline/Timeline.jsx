@@ -1,4 +1,5 @@
 import React from 'react'
+import Post from '../post/Post.jsx'
 import Share from '../share/Share.jsx'
 import './Timeline.css'
 
@@ -7,7 +8,10 @@ function Timeline() {
     <div className='timeline'>
         <div className='timeline-wrapper'>
             <Share />
-            {/* <Post /> */}
+            <Post />
+            <Post />
+            <Post />
+            <Post />
         </div>
     </div>
   )
