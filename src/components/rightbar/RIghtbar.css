@@ -1,3 +1,91 @@
 .rightbar {
     flex: 3.5;
 }
+
+.rightbar-wrapper {
+    padding: 20px 20px 0 0;
+}
+
+.event-container {
+    display: flex;
+    align-items: center;
+}
+
+.star-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.event-text {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.event-img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 25px 0;
+}
+
+.rightbar-title {
+    margin-bottom: 20px;
+}
+
+.rightbar-friend-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.rightbar-friend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rightbar-profile-img-container {
+    margin-right: 10px;
+    position: relative;
+}
+
+.rightbar-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.rightbar-user-name {
+    font-weight: 550;
+}
+
+.rightbar-online {
+    background-color: purple;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: -2px;
+    left: 0;
+    border: 2px solid white;
+}
+
+.promotion-title {
+    font-style: 18px;
+    font-weight: 550;
+    margin-bottom: -15px;
+}
+
+.rightbar-promotion-img {
+    width: 85%;
+    border-radius: 10px;
+    margin: 25px 0;
+}
+
+.promotion-name {
+    font-style: small;
+    color: rgb(65, 62, 62);
+    margin-top: -20px;
+    margin-bottom: 0;
+}
