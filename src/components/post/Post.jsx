@@ -5,6 +5,7 @@ import { Users } from '../../dummyData'
 
 
 function Post({ post }) {
+    const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER
     const [like, setLike] = useState(post.like)
     const [isLiked, setIsLiked] = useState(false)
     const handleLike = () => {
@@ -16,7 +17,7 @@ function Post({ post }) {
             <div className='post-wrapper'>
                 <div className='post-top'>
                     <div className="post-top-left">
-                        <img src={Users.filter(user => user.id === post.id)[0].profilePicture} alt='' className='post-profile-img' />
+                        <img src={PUBLIC_FOLDER + Users.filter(user => user.id === post.id)[0].profilePicture} alt='' className='post-profile-img' />
                         <span className='post-user-name'>
                             {Users.filter(user => user.id === post.id)[0].username}
                         </span>
@@ -28,12 +29,12 @@ function Post({ post }) {
                 </div>
                 <div className='post-center'>
                     <span className="post-text">{post.desc}</span>
-                    <img src={post.photo} alt='' className='post-img' />
+                    <img src={PUBLIC_FOLDER + post.photo} alt='' className='post-img' />
                 </div>
                 <div className="post-bottom">
                     <div className="post-bottom-left">
                         <img 
-                            src="/assets/heart.png" 
+                            src={ PUBLIC_FOLDER + "/heart.png" }
                             alt="" 
                             className='like-icon' 
                             onClick={() => handleLike()}
