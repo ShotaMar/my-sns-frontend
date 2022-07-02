@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import './Post.css'
 import { format } from 'timeago.js'
-
+import { Link } from 'react-router-dom'
 // import { Users } from '../../dummyData'
 
 
@@ -32,7 +32,9 @@ function Post({ post }) {
             <div className='post-wrapper'>
                 <div className='post-top'>
                     <div className="post-top-left">
-                        <img src={user.profilePicture || PUBLIC_FOLDER + '/person/noAvatar.png'} alt='' className='post-profile-img' />
+                        <Link to={`/profile/${user.username}`}>
+                            <img src={user.profilePicture || PUBLIC_FOLDER + '/person/noAvatar.png'} alt='' className='post-profile-img' />
+                        </Link>
                         <span className='post-user-name'>
                             {user.username}
                         </span>
