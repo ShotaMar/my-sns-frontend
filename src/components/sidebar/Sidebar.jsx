@@ -3,6 +3,7 @@ import React from 'react'
 import './Sidebar.css'
 import { Users } from '../../dummyData'
 import SidebarFriend from '../sidebarFriend/SidebarFriend'
+import { Link } from 'react-router-dom'
 
 function Sidebar() {
   return (
@@ -11,31 +12,45 @@ function Sidebar() {
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
                     <Home className='sidebar-icon' />
-                    <span className='sidebar-list-item-text'>HOME</span>
+                    <Link to='/' style={{textDecoration: 'none', color: 'black'}} >
+                        <span className='sidebar-list-item-text'>HOME</span>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <Search className='sidebar-icon' />
-                    <span className='sidebar-list-item-text'>SEARCH</span>
+                    <Link to='' style={{textDecoration: 'none', color: 'black'}}>
+                        <span className='sidebar-list-item-text'>SEARCH</span>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <Notifications className='sidebar-icon' />
-                    <span className='sidebar-list-item-text'>NOTIFICATION</span>
+                    <Link to='' style={{textDecoration: 'none', color: 'black'}}>
+                        <span className='sidebar-list-item-text'>NOTIFICATION</span>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <MessageRounded className='sidebar-icon' />
-                    <span className='sidebar-list-item-text'>MESSAGE</span>
+                    <Link to='' style={{textDecoration: 'none', color: 'black'}}>
+                        <span className='sidebar-list-item-text'>MESSAGE</span>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <Bookmark className='sidebar-icon' />
-                    <span className='sidebar-list-item-text'>BOOK MARK</span>
+                    <Link to='' style={{textDecoration: 'none', color: 'black'}}>
+                        <span className='sidebar-list-item-text'>BOOK MARK</span>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <Person className='sidebar-icon' />
-                    <span className='sidebar-list-item-text'>PROFILE</span>
+                    <Link to='/profile/mar' style={{textDecoration: 'none', color: 'black'}}>
+                        <span className='sidebar-list-item-text'>PROFILE</span>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <Settings className='sidebar-icon' />
-                    <span className='sidebar-list-item-text'>SETTING</span>
+                    <Link to='' style={{textDecoration: 'none', color: 'black'}}>
+                        <span className='sidebar-list-item-text'>SETTING</span>
+                    </Link>
                 </li>
             </ul>
             <hr className='sidebarHr' />
