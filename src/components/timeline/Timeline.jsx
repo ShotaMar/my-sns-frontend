@@ -5,17 +5,20 @@ import './Timeline.css'
 import axios from "axios"
 // import { Posts } from '../../dummyData'
 
-function Timeline() {
+function Timeline({ user }) {
   const [ posts, setPosts ] = useState([])
 
   useEffect(() => { 
     //useEfectにはasyncをつけられないため別でasync用関数を書く
     const fetchPosts = async() => {
-      const res = await axios.get('/posts/timeline/62aa05ceacb62a8278248741')
+      const res = user
+        ? await axios.get(`/posts/profile/${user.username}`)
+        : await axios.get('/posts/timeline/62aa05ceacb62a8278248741')
       setPosts(res.data)
+      console.log(posts)
     }
     fetchPosts()
-  },[])
+  },[user.username])
 
   return (
     <div className='timeline'>

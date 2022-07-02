@@ -16,11 +16,11 @@ function Post({ post }) {
     useEffect(() => { 
         //useEfectにはasyncをつけられないため別でasync用関数を書く
         const fetchUser = async() => {
-            const res = await axios.get(`/users/${post.userId}`)
+            const res = await axios.get(`/users?userId=${post.userId}`)
             setUser(res.data)
         }
         fetchUser()
-        },[])
+        },[post.userId])
 
     const handleLike = () => {
         setLike(isLiked ? like -1 : like + 1)
