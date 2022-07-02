@@ -29,12 +29,12 @@ function Profile() {
                     <div className="profile-right-top">
                         <div className="profile-cover">
                             <img 
-                                src={PUBLIC_FOLDER + "/post/3.jpeg"}
+                                src={user.coverPictuire || PUBLIC_FOLDER + "/post/3.jpeg"}
                                 alt=""
                                 className='profile-cover-img'
                             />
                             <img 
-                                src={PUBLIC_FOLDER + "/person/1.png"}
+                                src={user.profilePicture || PUBLIC_FOLDER + '/person/noAvatar.png'}
                                 alt=""
                                 className='profile-user-img'
                             />
@@ -45,7 +45,7 @@ function Profile() {
                         </div>
                     </div>
                     <div className="profile-right-bottom">
-                    <Timeline user={ user }/>
+                    <Timeline username={ username }/>
                     <Rightbar user={ user }/>
                     </div>
                 </div>
