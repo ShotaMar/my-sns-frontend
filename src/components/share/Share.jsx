@@ -1,11 +1,29 @@
 import { Analytics, Face, Gif, Image } from '@mui/icons-material'
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { AuthContext } from '../../state/AuthContext'
+import axios from 'axios'
 import './Share.css'
 
 function Share() {
     const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER
     const { user } = useContext(AuthContext)
+    const desc = useRef()
+    
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+
+        const newPost = {
+            userId: user._id,
+            desc: desc.current.value
+        }
+
+        try {
+            await axios.post('/posts', newPost)
+            window.location.reload()
+        }catch(err) {
+            console.log(err)
+        }
+    }
 
     return (
         <div className='share'>
@@ -20,10 +38,15 @@ function Share() {
                         alt='' 
                         className='share-profile-img' 
                     />
-                    <input type="text" className='share-input' placeholder='what are you doing ?' />
+                    <input 
+                        type="text" 
+                        className='share-input' 
+                        placeholder='what are you doing ?' 
+                        ref={desc}
+                    />
                 </div>
                 <hr className='share-hr'/>
-                <div className='share-buttons'>
+                <form className='share-buttons' onSubmit={(e) => handleSubmit(e)} >
                     <div className='share-options'>
                         <div className='share-option'>
                             <Image className='share-icon' htmlColor='blue'/>
@@ -42,8 +65,8 @@ function Share() {
                             <span className='share-option-text'>投票</span>
                         </div>
                     </div>
-                    <button className='share-button'>投稿</button>
-                </div>
+                    <button className='share-button' type='submit'>投稿</button>
+                </form>
             </div>
         </div>
     )
