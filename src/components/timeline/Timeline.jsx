@@ -16,7 +16,9 @@ function Timeline({ username }) {
       const res = username
         ? await axios.get(`/posts/profile/${username}`) //プロフィール画面の場合
         : await axios.get(`/posts/timeline/${user._id}`) //ホーム画面の場合
-      setPosts(res.data)
+      setPosts(res.data.sort((post1, post2) => {
+        return new Date(post2.createdAt) - new Date(post1.createdAt)
+      }))
     }
     fetchPosts()
   },[username, user._id])
