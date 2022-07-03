@@ -63,7 +63,7 @@ function Post({ post }) {
                 </div>
                 <div className='post-center'>
                     <span className="post-text">{post.desc}</span>
-                    <img src={PUBLIC_FOLDER + post.img} alt='' className='post-img' />
+                    <img src={post.img ? PUBLIC_FOLDER + post.img : ''} alt='' className='post-img' />
                 </div>
                 <div className="post-bottom">
                     <div className="post-bottom-left">
