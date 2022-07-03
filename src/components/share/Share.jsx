@@ -1,5 +1,5 @@
 import { Analytics, Face, Gif, Image } from '@mui/icons-material'
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { AuthContext } from '../../state/AuthContext'
 import axios from 'axios'
 import './Share.css'
@@ -8,7 +8,8 @@ function Share() {
     const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER
     const { user } = useContext(AuthContext)
     const desc = useRef()
-    
+    const [file, setFile] = useState(null)
+
     const handleSubmit = async(e) => {
         e.preventDefault()
 
@@ -48,10 +49,17 @@ function Share() {
                 <hr className='share-hr'/>
                 <form className='share-buttons' onSubmit={(e) => handleSubmit(e)} >
                     <div className='share-options'>
-                        <div className='share-option'>
+                        <label className='share-option' htmlFor='file'>
                             <Image className='share-icon' htmlColor='blue'/>
                             <span className='share-option-text'>写真</span>
-                        </div>
+                            <input 
+                                type="file" 
+                                id="file" 
+                                accept=".png, .jpeg, .jpg" 
+                                style={{display: "none"}} 
+                                onChange={(e) => setFile(e.target.files[0])}
+                            />
+                        </label>
                         <div className='share-option'>
                             <Gif className='share-icon' htmlColor='hotpink'/>
                             <span className='share-option-text'>GIF</span>
