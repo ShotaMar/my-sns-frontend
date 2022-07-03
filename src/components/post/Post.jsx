@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import './Post.css'
 import { format } from 'timeago.js'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../state/AuthContext'
+import { useContext } from 'react'
 // import { Users } from '../../dummyData'
 
 
@@ -12,6 +14,7 @@ function Post({ post }) {
     const [like, setLike] = useState(post.likes.length)
     const [isLiked, setIsLiked] = useState(false)
     const [user, setUser] = useState({})
+    const { user: currentUser } = useContext(AuthContext) //変数名(user)が被ってるためこの書き方
 
     useEffect(() => { 
         //useEfectにはasyncをつけられないため別でasync用関数を書く
@@ -22,7 +25,13 @@ function Post({ post }) {
         fetchUser()
         },[post.userId])
 
-    const handleLike = () => {
+    const handleLike = async() => {
+        try {
+            //いいねのAPIを叩く
+            await axios.put(`/posts/${post._id}/like`,{ userId: currentUser._id })
+        }catch(err){
+            console.log(err)
+        }
         setLike(isLiked ? like -1 : like + 1)
         setIsLiked(!isLiked)
     }
@@ -33,7 +42,15 @@ function Post({ post }) {
                 <div className='post-top'>
                     <div className="post-top-left">
                         <Link to={`/profile/${user.username}`}>
-                            <img src={user.profilePicture || PUBLIC_FOLDER + '/person/noAvatar.png'} alt='' className='post-profile-img' />
+                            <img 
+                                src={
+                                    user.profilePicture
+                                    ? PUBLIC_FOLDER + user.profilePicture
+                                    : PUBLIC_FOLDER + '/person/noAvatar.png'
+                                }
+                                alt='' 
+                                className='post-profile-img' 
+                            />
                         </Link>
                         <span className='post-user-name'>
                             {user.username}
