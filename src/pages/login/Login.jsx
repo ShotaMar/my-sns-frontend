@@ -10,14 +10,25 @@ function Login() {
                     <span className="login-desc">SNS作成中</span>
                 </div>
                 <div className="login-right">
-                    <div className="login-box">
+                    <form className="login-box">
                         <p className="login-message">wellcome</p>
-                        <input type="text" className="login-input" placeholder='mail' />
-                        <input type="text" className="login-input" placeholder='password'/>
+                        <input 
+                            type="email" 
+                            className="login-input" 
+                            placeholder="mail" 
+                            required
+                        />
+                        <input 
+                            type="password" 
+                            className="login-input" 
+                            placeholder="password"
+                            required
+                            minLength="6"
+                        />
                         <button className="login-button">login</button>
                         <span className="login-forgot">if you forgot pass</span>
                         <button className="login-register-button">create account</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>    
