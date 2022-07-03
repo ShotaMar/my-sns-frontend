@@ -1,15 +1,25 @@
 import { Analytics, Face, Gif, Image } from '@mui/icons-material'
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../state/AuthContext'
 import './Share.css'
 
-function share() {
+function Share() {
     const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER
+    const { user } = useContext(AuthContext)
 
     return (
         <div className='share'>
             <div className='share-wrapper'>
                 <div className='share-top'>
-                    <img src={PUBLIC_FOLDER + '/person/noAvatar.png'} alt='' className='share-profile-img' />
+                    <img
+                        src={
+                            user.profilePicture
+                            ? PUBLIC_FOLDER + user.profilePicture
+                            : PUBLIC_FOLDER + '/person/noAvatar.png'
+                        }
+                        alt='' 
+                        className='share-profile-img' 
+                    />
                     <input type="text" className='share-input' placeholder='what are you doing ?' />
                 </div>
                 <hr className='share-hr'/>
@@ -39,4 +49,4 @@ function share() {
     )
 }
 
-export default share
+export default Share

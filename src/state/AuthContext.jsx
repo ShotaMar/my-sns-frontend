@@ -13,7 +13,7 @@ const initialState = {
         username: "shota",
         email: "shota@gmail.com",
         password: "abcdefg",
-        profilePicture: "/assets/person/1.png",
+        profilePicture: "/person/1.png",
         coverPicture: "",
         followers: [],
         followings: [],

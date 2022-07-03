@@ -31,7 +31,15 @@ export default function Topbar() {
                         <span className="topbar-icon-badge">2</span>
                     </div>
                 <Link to={`/profile/${user.username}`}>
-                    <img src={ user.profilePicture || `${PUBLIC_FOLDER}/person/noAvatar.png` } alt='' className='topbar-img' />
+                    <img 
+                        src={ 
+                            user.profilePicture
+                            ? PUBLIC_FOLDER + user.profilePicture
+                            : PUBLIC_FOLDER + '/person/noAvatar.png'
+                        }
+                        alt='' 
+                        className='topbar-img' 
+                    />
                 </Link>
                 </div>
             </div>
